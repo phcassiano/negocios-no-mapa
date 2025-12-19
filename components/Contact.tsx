@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Send, Phone, MapPin, Mail } from 'lucide-react';
+import { MessageCircle, Send, Phone, MapPin, Mail, CheckCircle } from 'lucide-react';
 import { ContactFormData } from '../types';
 
 const Contact: React.FC = () => {
@@ -10,15 +10,37 @@ const Contact: React.FC = () => {
     message: ''
   });
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    alert(`Obrigado, ${formData.name}! Recebemos sua mensagem. Entraremos em contato em breve.`);
+    
+    // Número de destino
+    const phoneNumber = "5511968122868";
+
+    // Construção da mensagem formatada
+    const text = `*Nova Solicitação via Site*\n\n` +
+      `*Nome:* ${formData.name}\n` +
+      `*Empresa:* ${formData.businessName}\n` +
+      `*Telefone:* ${formData.phone}\n` +
+      `*Mensagem:* ${formData.message}`;
+
+    // Codifica o texto para URL e abre o WhatsApp
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+    
+    window.open(whatsappUrl, '_blank');
+
+    // Limpa o formulário e mostra mensagem de sucesso
     setFormData({ name: '', businessName: '', phone: '', message: '' });
+    setShowSuccess(true);
+
+    // Esconde a mensagem após 5 segundos
+    setTimeout(() => setShowSuccess(false), 5000);
   };
 
   return (
@@ -148,8 +170,15 @@ const Contact: React.FC = () => {
                 type="submit"
                 className="w-full bg-brand-600 text-white font-bold py-4 rounded-lg hover:bg-brand-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2"
               >
-                <Send size={18} /> Enviar Solicitação
+                <Send size={18} /> Enviar Solicitação no WhatsApp
               </button>
+
+              {showSuccess && (
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-center text-sm font-medium animate-fade-in-up flex items-center justify-center gap-2">
+                  <CheckCircle size={18} />
+                  Mensagem enviada com sucesso!
+                </div>
+              )}
             </form>
           </div>
 

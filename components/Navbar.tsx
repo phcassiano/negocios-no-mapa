@@ -17,15 +17,17 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-            <div className="bg-brand-600 p-2 rounded-lg text-white">
-              <MapPin size={24} />
+          <a href="#" className="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-90 transition-opacity">
+            <div className="bg-white border-2 border-google-red p-1.5 rounded-lg text-google-red shadow-sm">
+              <MapPin size={24} className="fill-google-red text-google-red" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900 leading-tight">Negócio no Mapa</h1>
-              <span className="text-xs font-semibold text-brand-600 tracking-wider">BSB</span>
+              <h1 className="text-xl font-bold text-gray-800 leading-tight">
+                <span className="text-google-blue">Negócio</span> <span className="text-gray-600">no</span> <span className="text-google-green">Mapa</span>
+              </h1>
+              <span className="text-xs font-bold text-google-yellow tracking-wider bg-yellow-50 px-1 rounded">BSB</span>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
@@ -42,7 +44,7 @@ const Navbar: React.FC = () => {
               href="https://wa.me/5511968122868"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-brand-700 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 hover:scale-105 flex items-center gap-2"
+              className="bg-[#25D366] text-white px-5 py-2.5 rounded-full font-semibold hover:bg-[#128C7E] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 hover:scale-105 flex items-center gap-2"
             >
               <MessageCircle size={18} />
               WhatsApp
@@ -63,7 +65,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full">
+        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <a
@@ -79,7 +81,7 @@ const Navbar: React.FC = () => {
                href="https://wa.me/5511968122868"
                target="_blank"
                rel="noopener noreferrer"
-               className="block w-full text-center mt-4 bg-brand-600 text-white px-4 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform"
+               className="block w-full text-center mt-4 bg-[#25D366] text-white px-4 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform"
             >
               <MessageCircle size={20} />
               Falar no WhatsApp

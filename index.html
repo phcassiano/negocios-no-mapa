@@ -12,19 +12,27 @@
           extend: {
             colors: {
               brand: {
-                50: '#f0fdf4',
-                100: '#dcfce7',
-                500: '#22c55e',
-                600: '#16a34a',
-                700: '#15803d',
-                900: '#14532d',
+                50: '#eff6ff', 
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                500: '#2563EB', // Azul vibrante (Blue 600 equivalent)
+                600: '#1D4ED8', // Azul mais escuro e vibrante (Blue 700 equivalent)
+                700: '#1e40af',
+                900: '#1e3a8a',
+                green: '#22c55e', // Verde vivo solicitado
+              },
+              google: {
+                blue: '#4285F4',
+                red: '#EA4335',
+                yellow: '#FBBC05',
+                green: '#22c55e', // Atualizado para um verde mais vivo
               },
               primary: {
-                50: '#eff6ff',
-                100: '#dbeafe',
-                600: '#2563eb',
-                700: '#1d4ed8',
-                900: '#1e3a8a',
+                50: '#f8f9fa',
+                100: '#e8eaed',
+                600: '#5f6368', // Google Gray
+                700: '#202124', // Google Dark Gray
+                900: '#174ea6',
               }
             },
             fontFamily: {
@@ -55,6 +63,10 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px; /* Compensa a altura do Navbar fixo */
       }
       .animation-delay-2000 {
         animation-delay: 2s;
